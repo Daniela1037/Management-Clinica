@@ -1,0 +1,125 @@
+html, body, #root, #main {
+  height: 100%;
+}
+#main {
+  display: flex;
+  flex-direction: column;
+}
+
+.fw-bold {
+  font-weight: bold !important;
+}
+
+.register-form {
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  width: 60%;
+}
+.row {
+  margin: 0 !important;
+}
+
+.login-form {
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  width: 40%;
+}
+
+.doctor-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  width: 45%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+.poza{
+  width: 170px;
+  border: 1px solid lightblue;
+  border-radius: 50%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.card-preturi {
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  width: 45%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  text-transform: capitalize;
+}
+
+.linie-card-preturi {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.titlu-card-preturi {
+  background-color: lightblue;
+  padding: 15px;
+  text-align: center;
+}
+
+.form-programare{
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  padding: 30px;
+  width: 45%;
+  margin-top: 50px;
+}
+
+.canvasjs-chart-credit{
+  display: none;
+}
+
+.principal-card {
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  width: 50%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+.carousel-inner {
+  max-height:50vh;
+}
+.carousel-item {
+  max-height:50vh;
+}
+.carousel-item img {
+  max-height:50vh;
+  object-fit: cover;
+}
+.carousel-caption h1 {
+  color: black;
+}
+.carousel-caption p {
+  color: black;
+  font-size: xx-large;
+}
+
+.abonament-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px solid lightblue;
+  border-radius: 15px;
+  width: 90%;
+  margin-top: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 30px;
+}

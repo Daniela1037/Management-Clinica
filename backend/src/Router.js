@@ -1,0 +1,26 @@
+const express = require('express')
+const Router = express.Router()
+const { getToateProgramarile, getProgramarileMele, adaugaComentariu, modificaStatus, adaugaProgramare } = require('./Programari')
+const { register, login } = require('./Users')
+const { getPersonal } = require('./Personal')
+const { getIstoricDoctori } = require('./Istoric')
+const { getServicii } = require('./Servicii')
+const { getSpecializari, getPreturi } = require('./Specializari')
+const { getOreDisponibile } = require('./Programari')
+
+Router.get('/toate-programarile', getToateProgramarile)
+Router.post('/register', register)
+Router.post('/login', login)
+Router.get('/personal', getPersonal)
+Router.get('/specializari', getSpecializari)
+Router.get('/preturi', getPreturi)
+Router.get('/programarile-mele', getProgramarileMele)
+Router.post('/adauga-comentariu', adaugaComentariu)
+Router.post('/modifica-status', modificaStatus)
+Router.get('/istoric-doctori', getIstoricDoctori)
+Router.get('/servicii', getServicii)
+Router.get('/ore-disponibile', getOreDisponibile)
+Router.post('/programare', adaugaProgramare)
+
+module.exports = Router
+
