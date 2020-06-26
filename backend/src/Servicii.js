@@ -1,4 +1,4 @@
-const connection = require('./mysql')
+const connection = require('../config/mysql')
 const getServicii = (req, res, next) => {
     const specializare = req.query.specializare
     connection.query(
@@ -16,5 +16,5 @@ const getServicii = (req, res, next) => {
 }
 
 module.exports = {
-    getServicii
+    getServicii,
 }

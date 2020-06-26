@@ -84,7 +84,8 @@ export default function ToateProgramarile() {
 				options={{
 					filtering: true,
 					actionsColumnIndex: -1,
-					pageSize: 10
+					pageSize: 10,
+					exportButton: true
 				}}
 				actions={[
 

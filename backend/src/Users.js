@@ -1,4 +1,4 @@
-const connection = require('./mysql');
+const connection = require('../config/mysql')
 const bcrypt = require('bcrypt')
 const generateHash = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -65,12 +65,29 @@ const login = (req, res, next) => {
                         success:true
                     })
                 } else {
-                    res.send('parola este incorecta')
+                    res.send({
+                        success:false,
+                        message: 'parola este incorecta'})
                 }
             }
         })
 }
+
+const getUsers = (req, res, next) => {
+    connection.query(
+        `SELECT * from users`,
+        [],
+        (err, result) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(result)
+            }
+        })
+}
+
 module.exports = {
     register,
     login,
+    getUsers,
 }

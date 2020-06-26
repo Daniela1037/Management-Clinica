@@ -14,8 +14,9 @@ import ProgramarileMele from './components/ProgramarileMele'
 import Programare from './components/Programare'
 import IstoricDoctori from './components/IstoricDoctori'
 import PaginaPrincipala from './components/PaginaPrincipala'
+import AdaugaDoctor from './components/AdaugaDoctor'
+import AdaugaServiciu from './components/AdaugaServiciu'
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link
@@ -27,6 +28,11 @@ function App() {
   const doctorAccess = localStorage.getItem('nivel_acces') === 'doctor'
   const adminAccess = localStorage.getItem('nivel_acces') === 'admin'
 
+  const logout = () => {
+    localStorage.setItem('nivel_acces','')
+    window.location.assign('/')
+  }
+
   return (
     <div id='main'>
       <Navbar bg="info" variant="dark">
@@ -35,18 +41,21 @@ function App() {
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/personal"><h6>Personal</h6></Nav.Link>
           <Nav.Link as={Link} to="/preturi"><h6>Preturi</h6></Nav.Link>
-          {(userAccess || doctorAccess || adminAccess) && <Nav.Link as={Link} to="/programari"><h6>Programarile mele</h6></Nav.Link>}
-          {(userAccess || doctorAccess || adminAccess) && <Nav.Link as={Link} to="/programare"><h6>Programeaza-te</h6></Nav.Link>}
-          {(doctorAccess || adminAccess) && <Nav.Link as={Link} to="/toate-programarile"><h6>Toate programarile</h6></Nav.Link>}
-          {(doctorAccess || adminAccess) && <Nav.Link as={Link} to="/istoric-doctori"><h6>Istoric doctori</h6></Nav.Link>}
+          {(userAccess || doctorAccess || adminAccess) && 
+            <Nav.Link as={Link} to="/programari"><h6>Programarile mele</h6></Nav.Link>}
+          {(userAccess || doctorAccess || adminAccess) &&
+            <Nav.Link as={Link} to="/programare"><h6>Programeaza-te</h6></Nav.Link>}
+          {(doctorAccess || adminAccess) && 
+            <Nav.Link as={Link} to="/toate-programarile"><h6>Toate programarile</h6></Nav.Link>}
+          {(doctorAccess || adminAccess) && 
+            <Nav.Link as={Link} to="/istoric-doctori"><h6>Istoric doctori</h6></Nav.Link>}
+          {adminAccess && 
+            <Nav.Link as={Link} to='/adauga-doctor'><h6>Adaugare/Stergere Doctor</h6></Nav.Link>}
+          {adminAccess && 
+            <Nav.Link as={Link} to='/adauga-serviciu'><h6>Adauga Serviciu</h6></Nav.Link>}
           <Nav.Link as={Link} to="/contact"><h6>Contact</h6></Nav.Link>
         </Nav>
-        {(userAccess || doctorAccess || adminAccess) && <Link className="btn btn-outline-light" onClick = {() => {
-          localStorage.setItem('nivel_acces','')
-          window.location.assign('/')
-        }}>
-          Logout
-        </Link> }
+        {(userAccess || doctorAccess || adminAccess) && <Link className="btn btn-outline-light" onClick = {logout}>Logout</Link> }
         {!(userAccess || doctorAccess || adminAccess) && <Link to='/login' className="btn btn-outline-light">Login</Link>}
         {!(userAccess || doctorAccess || adminAccess) && <Link to='/register' className="btn btn-outline-light ml-2">Register</Link>}
       </Navbar>
@@ -61,6 +70,8 @@ function App() {
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
+        <Route exact path='/adauga-doctor' component={AdaugaDoctor} />
+        <Route exact path='/adauga-serviciu' component={AdaugaServiciu} />
         <Route render={function () {
           return <p>Not found</p>
         }} />

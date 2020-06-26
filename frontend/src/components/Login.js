@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
-export default function Contact(props) {
+export default function Login(props) {
     const [validated,setValidated] = useState(true)
     const handleLogin = async (event) => {
         event.preventDefault()

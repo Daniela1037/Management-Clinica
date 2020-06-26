@@ -1,4 +1,4 @@
-const connection = require('./mysql')
+const connection = require('../config/mysql')
 const getSpecializari = (req, res, next) => {
     connection.query(
         `SELECT specializare from specializari`,
@@ -41,7 +41,30 @@ const getPreturi = (req, res, next) => {
         })
 }
 
+const adaugaServiciu = (req, res, next) => {
+    const {
+        specializare,
+        serviciu,
+        pret,
+    } = req.body
+
+    connection.query(
+        `INSERT INTO specializari (specializare, serviciu, pret) VALUES(?, ?, ?) `,
+        [specializare, serviciu, pret],
+        (err, result) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send({
+                    success: true,
+                    message: 'Serviciul a fost adaugat cu succes'
+                })
+            }
+        })
+}
+
 module.exports = {
     getSpecializari,
-    getPreturi
+    getPreturi,
+    adaugaServiciu,
 }

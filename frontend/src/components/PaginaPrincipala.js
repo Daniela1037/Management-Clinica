@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 
-export default function Contact() {
+export default function PaginaPrincipala() {
     return (
         <div>
             <Carousel className='custom-carousel'>

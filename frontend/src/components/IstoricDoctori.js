@@ -56,13 +56,13 @@ export default function IstoricDoctori() {
             },
             {
                 type: "stackedBar100",
-                color: "#7f7f7f",
-                name: "Total",
+                color: "#7986CB",
+                name: "Confirmate",
                 showInLegend: true,
                 indexLabel: "{y}",
                 indexLabelFontColor: "white",
                 yValueFormatString: "#,###'%'",
-                dataPoints: data.total
+                dataPoints: data.confirmate
             },
         ]
     }

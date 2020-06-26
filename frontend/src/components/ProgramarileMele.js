@@ -55,13 +55,14 @@ export default function ProgramarileMele() {
                     { title: 'Doctor', field: 'doctor' },
                     { title: 'Serviciu', field: 'serviciu' },
                     { title: 'Data si ora', field: 'data', type: 'date' },
-                    { title: 'Status', field: 'status', filtering: false },
+                    { title: 'Status', field: 'status' },
                 ]}
                 data={data}
                 options={{
                     filtering: true,
                     actionsColumnIndex: -1,
-                    pageSize: 10
+                    pageSize: 10,
+                    exportButton: true
                 }}
                 actions={[
                     {

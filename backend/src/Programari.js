@@ -1,25 +1,42 @@
-const connection = require('./mysql')
+const connection = require('../config/mysql')
 const getProgramarileMele = (req, res, next) => {
     const cnp = req.query.cnp
-    connection.query(`SELECT * from programari where pacient = ?`,
+    connection.query(`SELECT programari.specializare,
+            CONCAT(users.nume, " ", users.prenume) as doctor,
+            programari.serviciu,
+            programari.data,
+            programari.status
+                FROM programari LEFT JOIN users
+                ON programari.doctor = users.cnp
+                WHERE programari.pacient = ?`,
         [cnp],
         (err, result) => {
             if (err) {
                 console.log(err)
                 return res.send('server error');
             } else {
+                result.forEach(element => {
+                    element.data = new Date(element.data);
+                    element.data_nasterii = new Date(element.data_nasterii);
+                });
                 res.json(result);
             }
         });
 }
 
 const getToateProgramarile = (req, res, next) => {
-    connection.query(`SELECT * from programari join users on programari.pacient = users.cnp`,
+    connection.query(`SELECT *, (SELECT CONCAT(nume, ' ', prenume) FROM users WHERE users.cnp=programari.doctor) as doctor
+            FROM programari LEFT JOIN users
+            ON programari.pacient = users.cnp`,
         (err, result) => {
             if (err) {
                 console.log(err)
                 return res.send('server error');
             } else {
+                result.forEach(element => {
+                    element.data = new Date(element.data);
+                    element.data_nasterii = new Date(element.data_nasterii);
+                });
                 res.json(result);
             }
         });
