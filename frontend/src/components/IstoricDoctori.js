@@ -46,16 +46,6 @@ export default function IstoricDoctori() {
             },
             {
                 type: "stackedBar100",
-                color: "#9bbb59",
-                name: "Efectuate",
-                showInLegend: true,
-                indexLabel: "{y}",
-                indexLabelFontColor: "white",
-                yValueFormatString: "#,###'%'",
-                dataPoints: data.efectuate
-            },
-            {
-                type: "stackedBar100",
                 color: "#7986CB",
                 name: "Confirmate",
                 showInLegend: true,
@@ -63,6 +53,16 @@ export default function IstoricDoctori() {
                 indexLabelFontColor: "white",
                 yValueFormatString: "#,###'%'",
                 dataPoints: data.confirmate
+            },
+            {
+                type: "stackedBar100",
+                color: "#9bbb59",
+                name: "Efectuate",
+                showInLegend: true,
+                indexLabel: "{y}",
+                indexLabelFontColor: "white",
+                yValueFormatString: "#,###'%'",
+                dataPoints: data.efectuate
             },
         ]
     }

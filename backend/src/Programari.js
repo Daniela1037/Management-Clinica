@@ -88,12 +88,11 @@ const getOreDisponibile = (req, res, next) => {
                 console.log(err)
                 return res.send('server error');
             } else {
-                const programariInDataSelectata = result.filter(programare => sameDay(new Date(programare), new Date(data)))
+                const programariInDataSelectata = result.filter(programare => sameDay(new Date(programare.data), new Date(data)))
                 let availableHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-                availableHours = availableHours.filter( hour => !programariInDataSelectata.find(programare => {
-                    return new Date(programare).getHours() === hour
-                }))
-                res.json(availableHours);
+                res.json(availableHours.filter( hour => !programariInDataSelectata.find(programare => {
+                    return new Date(programare.data).getHours() === hour
+                })));
             }
         });
 }

@@ -5,7 +5,6 @@ const bodyParser = require("body-parser")
 const app = express();
 app.use(bodyParser())
 app.use(cors())
-
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(Router)
 app.listen(5000, () => {

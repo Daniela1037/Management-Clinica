@@ -13,7 +13,6 @@ export default function Programare() {
     const [doctorSelectat, setDoctorSelectat] = useState()
     const [dataSelectata, setDataSelectata] = useState()
     const [doctoriFiltrati, setDoctoriFiltrati] = useState([])
-    const [serviciiFiltrate, setServiciiFiltrate] = useState([])
     const [oreDisponibile, setOreDisponibile] = useState([])
 
     useEffect(() => {
@@ -55,7 +54,7 @@ export default function Programare() {
         const getOreDisponibile = async () => {
             const response = await fetch('http://localhost:5000/ore-disponibile?' + new URLSearchParams({
                 data: dataSelectata,
-                doctor: doctorSelectat,
+                doctor: doctorSelectat ? doctorSelectat.cnp : '',
             }), {
                 method: 'GET',
             })
@@ -77,7 +76,7 @@ export default function Programare() {
                 return;
             }
             const specializare = event.target.elements.specializare.value
-            const doctor = JSON.parse(doctorSelectat).cnp
+            const doctor = doctorSelectat.cnp
             const serviciu = event.target.elements.serviciu.value
             const selectedDate = new Date(event.target.elements.data.value)
             selectedDate.setHours(parseInt(event.target.elements.ora.value), 0, 0)
@@ -127,7 +126,7 @@ export default function Programare() {
                         </Form.Group>
                         <Form.Group as={Col} controlId="doctor">
                             <Form.Label>Doctor</Form.Label>
-                            <Form.Control onChange={(e) => { setDoctorSelectat(e.target.value) }} required as="select">
+                            <Form.Control onChange={(e) => { setDoctorSelectat(JSON.parse(e.target.value)) }} required as="select">
                                 <option value="">Alege...</option>
                                 {doctoriFiltrati.map(doctor => {
                                     const nume = doctor.nume + ' ' + doctor.prenume

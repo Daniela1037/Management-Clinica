@@ -16,11 +16,9 @@ const getIstoricDoctori = async (req, res, next) => {
                 confirmate: [],
             }
             result.forEach((row) => {
-                const sum = row.total + row.anulate + row.efectuate
-                dataPoints.total.push({y: row.total / sum * 100, label: row.label})
-                dataPoints.efectuate.push({y: row.efectuate / sum * 100, label: row.label})
-                dataPoints.anulate.push({y: row.anulate / sum * 100, label: row.label})
-                dataPoints.confirmate.push({y: row.confirmate / sum * 100, label: row.label})
+                dataPoints.efectuate.push({y: row.efectuate / row.total * 100, label: row.label})
+                dataPoints.anulate.push({y: row.anulate / row.total * 100, label: row.label})
+                dataPoints.confirmate.push({y: row.confirmate / row.total * 100, label: row.label})
             })
             res.json(dataPoints)
         });

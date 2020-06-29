@@ -7,6 +7,7 @@ export default function Personal() {
     const [specializari, setSpecializari] = useState(["Toate specializarile"])
     const [specializareSelectata, setSpecializareSelectata] = useState("Toate specializarile")
     const [data, setData] = useState([])
+    const [filteredData, setFilteredData] = useState(data)
     useEffect(() => {
         const getDoctori = async () => {
             const response = await fetch('http://localhost:5000/personal', {
@@ -27,7 +28,6 @@ export default function Personal() {
         getSpecializari()
     }, [])
     
-    const [filteredData, setFilteredData] = useState(data)
     return (
         <div>
             <div className='ml-5 mt-3'>
